@@ -32,10 +32,10 @@ class RedisHelper(object):
         key = self.get_key("playlist:tag", tag_name)
         self.redis_client_object.sadd(key,playlist_id)
 
-    def get_playlists_for_tag(tag_name)
+    def get_playlists_for_tag(tag_name):
         key = self.get_key("playlist:tag", tag_name)
         data = self.redis_client_object.smembers(key)
         return data
 
-    
+
 

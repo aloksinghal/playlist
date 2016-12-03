@@ -15,6 +15,7 @@ class Playlist(TimeStampedModel):
 
 class Song(TimeStampedModel):
     name = models.CharField(max_length=100)
+    url = models.URLField()
 
     def __unicode__(self):
         return self.name

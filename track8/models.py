@@ -1,12 +1,11 @@
 from django.db import models
 from model_utils.models import TimeStampedModel
-from redis_helper import RedisHelper
 
 # Create your models here.
 
 class Playlist(TimeStampedModel):
-    name = models.CharField(max_length=100)
-    like_count = models.IntegerField(default=0)
+    name = models.CharField(max_length=100, unique=True)
+    like_count = models.IntegerField(default=0, db_index=True)
     play_count = models.IntegerField(default=0)
 
     def __unicode__(self):
@@ -25,11 +24,6 @@ class Tag(TimeStampedModel):
 
     def __unicode__(self):
         return self.name
-
-    def save(self, *args, **kwargs):
-        redis_helper_obj = RedisHelper()
-        redis_helper_obj.create_tag(self.name)
-        super(Tag, self).save(*args, **kwargs)
 
 class PlaylistTag(TimeStampedModel):
     playlist = models.ForeignKey(Playlist)

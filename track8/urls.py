@@ -13,4 +13,7 @@ url(r'playlist/(?P<pk>[0-9]+)/song/add/$', views.AddSong.as_view(), name="Add So
 url(r'playlist/(?P<pk>[0-9]+)/song/remove/$', views.RemoveSong.as_view(), name="Remove Song API"),
 url(r'playlist/(?P<pk>[0-9]+)/tag/add/$', views.AddTag.as_view(), name="Add Tag API"),
 url(r'playlist/(?P<pk>[0-9]+)/tag/remove/$', views.RemoveTag.as_view(), name="Remove Tag API"),
+url(r'playlist/(?P<pk>[0-9]+)/like_count/increment/$', views.IncrementLikeCount.as_view(), name="Increment Like Count"),
+url(r'playlist/(?P<pk>[0-9]+)/like_count/decrement/$', views.DecrementLikeCount.as_view(), name="Decrement Like Count"),
+
 ]
